@@ -1,4 +1,4 @@
-- name: Restart service (Linux demo)
+- name: Restart service
   service:
     name: sshd
     state: restarted
