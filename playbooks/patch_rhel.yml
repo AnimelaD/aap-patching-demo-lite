@@ -1,0 +1,8 @@
+- hosts: rhel
+  become: yes
+  serial: 1
+  roles:
+    - precheck
+    - patch_rhel
+    - service_control
+    - reporting

@@ -1,0 +1,21 @@
+- name: Precheck Stage
+  hosts: all
+  roles:
+    - precheck
+
+- name: Patch RHEL Tier
+  hosts: rhel
+  serial: 1
+  roles:
+    - patch_rhel
+    - service_control
+
+- name: Patch Windows Tier
+  hosts: windows
+  roles:
+    - patch_windows
+
+- name: Reporting
+  hosts: all
+  roles:
+    - reporting

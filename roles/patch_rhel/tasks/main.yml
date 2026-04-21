@@ -1,0 +1,14 @@
+- name: Apply patches
+  yum:
+    name: "*"
+    state: latest
+  register: patch_result
+
+- name: Check if reboot required
+  command: needs-restarting -r
+  register: reboot_required
+  ignore_errors: yes
+
+- name: Reboot only if required
+  reboot:
+  when: reboot_required.rc == 1

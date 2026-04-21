@@ -1,0 +1,11 @@
+- name: Restart service (Linux demo)
+  service:
+    name: sshd
+    state: restarted
+  when: ansible_os_family != "Windows"
+
+- name: Restart Windows service
+  win_service:
+    name: wuauserv
+    state: restarted
+  when: ansible_os_family == "Windows"

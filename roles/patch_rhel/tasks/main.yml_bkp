@@ -1,0 +1,16 @@
+- name: Apply security patches
+  ansible.builtin.yum:
+    name: '*'
+    state: latest
+    security: yes
+  when: patch_mode == 'security'
+
+- name: Apply all patches
+  ansible.builtin.yum:
+    name: '*'
+    state: latest
+  when: patch_mode == 'all'
+
+- name: Reboot the system if required
+  ansible.builtin.reboot:
+  when: reboot_required

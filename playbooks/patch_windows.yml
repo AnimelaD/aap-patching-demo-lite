@@ -1,0 +1,5 @@
+- hosts: windows
+  roles:
+    - precheck
+    - patch_windows
+    - reporting

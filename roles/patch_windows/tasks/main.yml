@@ -1,0 +1,12 @@
+- name: Install security updates
+  win_updates:
+    category_names:
+      - SecurityUpdates
+    reboot: yes
+  when: patch_mode == "security"
+
+- name: Install all updates
+  win_updates:
+    category_names: "*"
+    reboot: yes
+  when: patch_mode == "full"

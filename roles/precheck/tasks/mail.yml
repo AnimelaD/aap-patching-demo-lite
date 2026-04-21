@@ -1,0 +1,12 @@
+- name: Check connectivity
+  ansible.builtin.ping:
+
+- name: Check disk space
+  ansible.builtin.shell: df -h
+  when: ansible_os_family != "Windows"
+  register: disk_space
+
+- name: show disk space
+  ansible.builtin.debug:
+    var: disk_space.stdout_lines
+  when: ansible_os_family != "Windows"
